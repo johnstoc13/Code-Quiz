@@ -13,13 +13,14 @@
 <body>
 
     <!-- Header -->
-    <header class="container-fluid text-primary">
+    <header class="container-fluid text-primary mt-2">
         <div class="row">
             <div class="col-6">
                 <a href="highscores.html"><strong>View Highscores</strong></a>
             </div>
             <div class="col-6 d-flex justify-content-end">
-                <a href="#"><strong>Time:</strong></a>
+                <a href="#"><strong>Time:&ThinSpace;</strong></a>
+                <div class="text-danger" id="timer">5 sec</div>
             </div>
         </div>
     </header>
@@ -35,7 +36,7 @@
             that incorrect answers will penalize your score/time by ten seconds!</h5>
                 <br />
                 <div class="d-flex justify-content-center">
-                    <a class="btn btn-primary text-white">Start Quiz</a>
+                    <a class="btn btn-primary text-white" onclick="countdown()" >Start Quiz</a>
                 </div>
             </div>
             <div class="col-md-3"></div>
