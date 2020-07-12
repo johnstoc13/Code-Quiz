@@ -8,6 +8,10 @@
     display: none;
 }
 
+#return-answer {
+    display: none;
+}
+
 .footer-font {
     font-size: 12px;
 }

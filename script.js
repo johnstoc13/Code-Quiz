@@ -1,4 +1,5 @@
 // Quiz questions
+// Cited:  https://www.codeexplained.org/2018/10/create-multiple-choice-quiz-using-javascript.html
 let myQuestions = [
     {
       question: "What is the outer most section of the box model?",
@@ -6,7 +7,7 @@ let myQuestions = [
       choiceB: "Margin",
       choiceC: "Content",
       choiceD: "Border",
-      answer: "B"
+      answer: "2"
     },
     {
       question: "How many columns are available in a page?",
@@ -14,7 +15,7 @@ let myQuestions = [
       choiceB: "16",
       choiceC: "4",
       choiceD: "12",
-      answer: "D"
+      answer: "4"
     },
     {
       question: "Which index do arrays begin with?",
@@ -22,7 +23,7 @@ let myQuestions = [
       choiceB: "string",
       choiceC: "0",
       choiceD: "null",
-      answer: "C"
+      answer: "3"
     },
     {
         question: "Which of the following codes signifies 'or'?",
@@ -30,7 +31,7 @@ let myQuestions = [
         choiceB: "&&",
         choiceC: "||",
         choiceD: "==",
-        answer: "C"
+        answer: "3"
       },
       {
         question: "What does CSS stand for?",
@@ -38,7 +39,7 @@ let myQuestions = [
         choiceB: "Computer Screen Style",
         choiceC: "Cascading Style Screen",
         choiceD: "Complicated Sheet Styling",
-        answer: "A"
+        answer: "1"
       },
       {
         question: "What does API stand for?",
@@ -46,7 +47,7 @@ let myQuestions = [
         choiceB: "Application Programming Interface",
         choiceC: "Assisted Programming Interface",
         choiceD: "Assisted Python Integration",
-        answer: "B"
+        answer: "2"
       },
       {
         question: "Which storage object stores data with no expiration?",
@@ -54,7 +55,7 @@ let myQuestions = [
         choiceB: "sessionStorage",
         choiceC: "websiteStorage",
         choiceD: "localStorage",
-        answer: "D"
+        answer: "4"
       },
       {
         question: "Which of the following is a valid HTML tag?",
@@ -62,7 +63,7 @@ let myQuestions = [
         choiceB: "<title>",
         choiceC: "<body>",
         choiceD: "All of the above!",
-        answer: "D"
+        answer: "4"
       },
       {
         question: "Which of the following is a valid javascript function?",
@@ -70,7 +71,7 @@ let myQuestions = [
         choiceB: "function() myFunction",
         choiceC: "let myFunction = ()",
         choiceD: "my Function()",
-        answer: "A"
+        answer: "1"
       },
       {
         question: "What does DOM stand for?",
@@ -78,24 +79,25 @@ let myQuestions = [
         choiceB: "Document Object Model",
         choiceC: "Developer Office Machine",
         choiceD: "Database Output Model",
-        answer: "B"
+        answer: "2"
       }
   ];
 
 // Starting score variable
 let score = 0;
-let timeLeft = 5
-const quizQuestion = document.getElementById("question");
-const answer1 = document.getElementById("option1")
-const answer2 = document.getElementById("option2")
-const answer3 = document.getElementById("option3")
-const answer4 = document.getElementById("option4")
+let timeLeft = 5;
+let quizQuestion = document.querySelector("#question");
+let answer1 = document.querySelector("#option1");
+let answer2 = document.querySelector("#option2");
+let answer3 = document.querySelector("#option3");
+let answer4 = document.querySelector("#option4");
+let returnAnswer = document.querySelector("#return-answer");
 let runningQuestion = 0;
-const lastQuestion = myQuestions.length - 1;
+let lastQuestion = myQuestions.length - 1;
 
 // Runs the countdown timer when clicked
 function countdown() {
-    const timer = setInterval(timeText, 1000);
+    let timer = setInterval(timeText, 1000);
     
     function timeText() {
         document.getElementById("timer").innerHTML = --timeLeft + " sec ";
@@ -112,23 +114,79 @@ function startQuiz() {
 }
 
 // Display first question and answers
+let q = myQuestions[runningQuestion];
 function displayQuestion()  {
-    let q = myQuestions[runningQuestion];
-    question.innerHTML = q.question;
-    option1.innerHTML = q.choiceA;
-    option2.innerHTML = q.choiceB;
-    option3.innerHTML = q.choiceC;
-    option4.innerHTML = q.choiceD;
-    for (var i = 0; i < myQuestions.length; i++) {
+    quizQuestion.textContent = q.question;
+    answer1.textContent = q.choiceA;
+    answer2.textContent = q.choiceB;
+    answer3.textContent = q.choiceC;
+    answer4.textContent = q.choiceD;
+}
 
+function nextQuestion() {
+    for (let i = 0; i <= lastQuestion; i++) {
+        
     }
 }
 
 
+function validateAnswer(answer) {
+    if (answer == q.answer)  {
+        score++;
+        returnAnswer.setAttribute("style", "display: block;");
+        returnAnswer.textContent = "CORRECT!";
+    } else {
+        returnAnswer.setAttribute("style", "display: block;")
+        returnAnswer.textContent = "WRONG!";
+        if (runningQuestion < lastQuestion) {   
+            runningQuestion++;
+            displayQuestion();
+        } else {
+            clearInterval(timer);
+            alert = "GAME OVER!"; 
+        }
+    }
+}
+
+console.log(score);
+console.log(runningQuestion);
+console.log(lastQuestion);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// var checks = document.querySelectorAll("#option");
+
+// for (var i = 0; i < checks; i++)    {
+//     checks[i].addEventListener("click", function()
+// }
+  
+//   function checkIndex(event){
+//     console.log( Array.from(checks).indexOf(event.target) );
+//   }
+
+// function validateAnswer()   {
+//     let options = q[1];
+//     let answer = q[5];
+//     for (var i = 0; i < 4; i++) {
+//         if (answer == q.answer);
+//         alert ("CORRECT!");
+//     }
+//     }
+// console.log(validateAnswer);
 
 // Ideas for above loop:  Need to validate 
-
-
 
 // for (var i = 0; i < myQuestions.length; i++) {
 //     let response = onclick(questions[i])
@@ -138,10 +196,6 @@ function displayQuestion()  {
 //         timeLeft-10;
 //     }
 // }
-
-
-
-
 
 // const scoreList = document.querySelector("#score-list");
 // let scores = [];

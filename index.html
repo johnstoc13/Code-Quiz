@@ -51,10 +51,14 @@
                 <div class="col-sm-12 col-md-6 d-flex flex-column">
                     <h4 id="question"></h4>
                     <br />
-                    <div class="btn btn-primary text-white mb-3" id="option1"></div>
-                    <div class="btn btn-primary text-white mb-3" id="option2"></div>
-                    <div class="btn btn-primary text-white mb-3" id="option3"></div>
-                    <div class="btn btn-primary text-white" id="option4"></div>
+                    <button class="btn btn-primary text-white mb-3" id="option1" onclick="validateAnswer()"></button>
+                    <button class="btn btn-primary text-white mb-3" id="option2" onclick="validateAnswer()"></button>
+                    <button class="btn btn-primary text-white mb-3" id="option3" onclick="validateAnswer()"></button>
+                    <button class="btn btn-primary text-white" id="option4" onclick="validateAnswer()"></button>
+                    <div>
+                        <hr class="border border-primary mt-5">
+                    </div>    
+                    <div class="text-center" id="return-answer"></div>
                 </div>
                 <div class="col-md-3"></div>
             </div>
