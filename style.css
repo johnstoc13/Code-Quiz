@@ -4,6 +4,10 @@
     font-family: 'Lato', sans-serif;
 }
 
+#startquiz {
+    display: none;
+}
+
 .footer-font {
     font-size: 12px;
 }
