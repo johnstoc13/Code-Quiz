@@ -1,104 +1,84 @@
 // Quiz questions
-const myQuestions = [
+let myQuestions = [
     {
       question: "What is the outer most section of the box model?",
-      answers: {
-        a: "Padding",
-        b: "Margin",
-        c: "Content",
-        d: "Border"
-      },
-      correctAnswer: "b"
+      choiceA: "Padding",
+      choiceB: "Margin",
+      choiceC: "Content",
+      choiceD: "Border",
+      answer: "B"
     },
     {
       question: "How many columns are available in a page?",
-      answers: {
-        a: "8",
-        b: "16",
-        c: "4",
-        d: "12"
-      },
-      correctAnswer: "d"
+      choiceA: "8",
+      choiceB: "16",
+      choiceC: "4",
+      choiceD: "12",
+      answer: "D"
     },
     {
       question: "Which index do arrays begin with?",
-      answers: {
-        a: "1",
-        b: "string",
-        c: "0",
-        d: "null"
-      },
-      correctAnswer: "c"
+      choiceA: "1",
+      choiceB: "string",
+      choiceC: "0",
+      choiceD: "null",
+      answer: "C"
     },
     {
         question: "Which of the following codes signifies 'or'?",
-        answers: {
-          a: "$$",
-          b: "&&",
-          c: "||",
-          d: "=="
-        },
-        correctAnswer: "c"
+        choiceA: "$$",
+        choiceB: "&&",
+        choiceC: "||",
+        choiceD: "==",
+        answer: "C"
       },
       {
         question: "What does CSS stand for?",
-        answers: {
-          a: "Cascading Style Sheet",
-          b: "Computer Screen Style",
-          c: "Cascading Style Screen",
-          d: "Complicated Sheet Styling"
-        },
-        correctAnswer: "a"
+        choiceA: "Cascading Style Sheet",
+        choiceB: "Computer Screen Style",
+        choiceC: "Cascading Style Screen",
+        choiceD: "Complicated Sheet Styling",
+        answer: "A"
       },
       {
         question: "What does API stand for?",
-        answers: {
-          a: "Application Pre Interview",
-          b: "Application Programming Interface",
-          c: "Assisted Programming Interface",
-          d: "Assisted Python Integration"
-        },
-        correctAnswer: "b"
+        choiceA: "Application Pre Interview",
+        choiceB: "Application Programming Interface",
+        choiceC: "Assisted Programming Interface",
+        choiceD: "Assisted Python Integration",
+        answer: "B"
       },
       {
         question: "Which storage object stores data with no expiration?",
-        answers: {
-          a: "databaseStorage",
-          b: "sessionStorage",
-          c: "websiteStorage",
-          d: "localStorage"
-        },
-        correctAnswer: "d"
+        choiceA: "databaseStorage",
+        choiceB: "sessionStorage",
+        choiceC: "websiteStorage",
+        choiceD: "localStorage",
+        answer: "D"
       },
       {
         question: "Which of the following is a valid HTML tag?",
-        answers: {
-          a: "<aside>",
-          b: "<title>",
-          c: "<body>",
-          d: "All of the above!"
-        },
-        correctAnswer: "d"
+        choiceA: "<aside>",
+        choiceB: "<title>",
+        choiceC: "<body>",
+        choiceD: "All of the above!",
+        answer: "D"
       },
       {
         question: "Which of the following is a valid javascript function?",
-        answers: {
-          a: "function myFunction()",
-          b: "function() myFunction",
-          c: "let myFunction = ()",
-          d: "my Function()"
-        },
-        correctAnswer: "a"
+        choiceA: "function myFunction()",
+        choiceB: "function() myFunction",
+        choiceC: "let myFunction = ()",
+        choiceD: "my Function()",
+        answer: "A"
       },
       {
         question: "What does DOM stand for?",
-        answers: {
-          a: "Database Object Module",
-          b: "Document Object Model",
-          c: "Developer Office Machine",
-          d: "Database Output Model"
-        },
-        correctAnswer: "b"
+        choiceA: "Database Object Module",
+        choiceB: "Document Object Model",
+        choiceC: "Developer Office Machine",
+        choiceD: "Database Output Model",
+        answer: "B"
       }
   ];
 
@@ -106,6 +86,12 @@ const myQuestions = [
 let score = 0;
 let timeLeft = 5
 const quizQuestion = document.getElementById("question");
+const answer1 = document.getElementById("option1")
+const answer2 = document.getElementById("option2")
+const answer3 = document.getElementById("option3")
+const answer4 = document.getElementById("option4")
+let runningQuestion = 0;
+const lastQuestion = myQuestions.length - 1;
 
 // Runs the countdown timer when clicked
 function countdown() {
@@ -125,14 +111,22 @@ function startQuiz() {
     document.getElementById("startpage").style.display = "none";
 }
 
+// Display first question and answers
+function displayQuestion()  {
+    let q = myQuestions[runningQuestion];
+    question.innerHTML = q.question;
+    option1.innerHTML = q.choiceA;
+    option2.innerHTML = q.choiceB;
+    option3.innerHTML = q.choiceC;
+    option4.innerHTML = q.choiceD;
+    for (var i = 0; i < myQuestions.length; i++) {
+
+    }
+}
 
 
 
-
-
-
-
-
+// Ideas for above loop:  Need to validate 
 
 
 
