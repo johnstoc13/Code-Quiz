@@ -86,6 +86,7 @@ let myQuestions = [
 // Starting score variable
 let score = 0;
 let timeLeft = 5;
+let start = document.querySelector("#start");
 let quizQuestion = document.querySelector("#question");
 let answer1 = document.getElementById("1");
 let answer2 = document.getElementById("2");
@@ -106,12 +107,8 @@ function countdown() {
             clearInterval(timer);
         }
     }
-}
-
-// Toggle from home page to beginning of quiz
-function startQuiz() {
-    document.getElementById("startquiz").style.display = "block";
-    document.getElementById("startpage").style.display = "none";
+    startQuiz();
+    displayQuestion();
 }
 
 // Display first question and answers
@@ -122,6 +119,12 @@ function displayQuestion()  {
     answer2.textContent = q.choiceB;
     answer3.textContent = q.choiceC;
     answer4.textContent = q.choiceD;
+}
+
+// Toggle from home page to beginning of quiz
+function startQuiz() {
+    document.getElementById("startquiz").style.display = "block";
+    document.getElementById("startpage").style.display = "none";
 }
 
 //Set clicked answer to new value for validation 
@@ -166,6 +169,7 @@ console.log(lastQuestion);
 
 
 // Event listeners for each multiple choice answer
+start.addEventListener("click", countdown);
 answer1.addEventListener("click", setClickedAnswer);
 answer2.addEventListener("click", setClickedAnswer);
 answer3.addEventListener("click", setClickedAnswer);
