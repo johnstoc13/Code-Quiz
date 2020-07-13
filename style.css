@@ -12,6 +12,16 @@
     display: none;
 }
 
+.correct {
+    color: #28a746;
+    text-align: center;
+}
+
+.wrong {
+    color: #dd3546;
+    text-align: center;
+}
+
 .footer-font {
     font-size: 12px;
 }
