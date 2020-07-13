@@ -83,19 +83,18 @@ let myQuestions = [
       }
   ];
 
-// Starting score variable
+// Starting variables
 let score = 0;
 let timeLeft = 5;
-let start = document.querySelector("#start");
-let quizQuestion = document.querySelector("#question");
-let answer1 = document.getElementById("1");
-let answer2 = document.getElementById("2");
-let answer3 = document.getElementById("3");
-let answer4 = document.getElementById("4");
-let returnAnswer = document.querySelector("#return-answer");
+const start = document.querySelector("#start");
+const quizQuestion = document.querySelector("#question");
+const answer1 = document.getElementById("1");
+const answer2 = document.getElementById("2");
+const answer3 = document.getElementById("3");
+const answer4 = document.getElementById("4");
+const returnAnswer = document.querySelector("#return-answer");
 let runningQuestion = 0;
 let lastQuestion = myQuestions.length - 1;
-let answerButtons = document.querySelector("div.buttons");
 
 // Runs the countdown timer when clicked
 function countdown() {
