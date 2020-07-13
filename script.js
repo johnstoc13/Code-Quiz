@@ -96,7 +96,7 @@ const returnAnswer = document.querySelector("#return-answer");
 let runningQuestion = 0;
 let lastQuestion = myQuestions.length - 1;
 
-// Runs the countdown timer when clicked
+// Runs the countdown timer, activates startQuiz & displayQuestion functions when clicked
 function countdown() {
     let timer = setInterval(timeText, 1000);
     
@@ -111,8 +111,8 @@ function countdown() {
 }
 
 // Display first question and answers
-let q = myQuestions[runningQuestion];
 function displayQuestion()  {
+    q = myQuestions[runningQuestion];
     quizQuestion.textContent = q.question;
     answer1.textContent = q.choiceA;
     answer2.textContent = q.choiceB;
@@ -148,26 +148,31 @@ function validateAnswer() {
         returnAnswer.setAttribute("style", "display: block;");
         returnAnswer.setAttribute("class", "correct");
         returnAnswer.textContent = "CORRECT!";
+        nextQuestion();
     } else {
         returnAnswer.setAttribute("style", "display: block;");
         returnAnswer.setAttribute("class", "wrong");
-        returnAnswer.textContent = "WRONG!";
-        if (runningQuestion < lastQuestion) {
-            runningQuestion++;
-            displayQuestion();
-        } else {
-            clearInterval(timer);
-            alert = "GAME OVER!";
-        }
+        returnAnswer.textContent = "WRONG!"; 
+        nextQuestion();
     }
 }
             
-console.log(runningQuestion);
-console.log(lastQuestion);
+
+// WORKING HERE AT THE MOMENT *******************************
+// Load next question
+function nextQuestion() {
+    if (runningQuestion < lastQuestion)  {
+        runningQuestion++;
+        displayQuestion();
+    } else  {
+        alert = "GAME OVER!";
+    }
+    console.log(runningQuestion);
+    console.log(lastQuestion);
+}
 
 
-
-
+// Logs to verify new questions load
 
 // Event listeners for each multiple choice answer
 start.addEventListener("click", countdown);
