@@ -87,14 +87,14 @@ let myQuestions = [
 let score = 0;
 let timeLeft = 5;
 let quizQuestion = document.querySelector("#question");
-let answer1 = document.querySelector("#option1");
-let answer2 = document.querySelector("#option2");
-let answer3 = document.querySelector("#option3");
-let answer4 = document.querySelector("#option4");
+let answer1 = document.getElementById("1");
+let answer2 = document.getElementById("2");
+let answer3 = document.getElementById("3");
+let answer4 = document.getElementById("4");
 let returnAnswer = document.querySelector("#return-answer");
 let runningQuestion = 0;
 let lastQuestion = myQuestions.length - 1;
-let clickedAnswer = null;
+let answerButtons = document.querySelector("div.buttons");
 
 // Runs the countdown timer when clicked
 function countdown() {
@@ -107,12 +107,11 @@ function countdown() {
         }
     }
 }
-console.log(clickedAnswer); 
+
 // Toggle from home page to beginning of quiz
 function startQuiz() {
     document.getElementById("startquiz").style.display = "block";
     document.getElementById("startpage").style.display = "none";
-    console.log(clickedAnswer);
 }
 
 // Display first question and answers
@@ -125,49 +124,40 @@ function displayQuestion()  {
     answer4.textContent = q.choiceD;
 }
 
-// function nextQuestion() {
-//     for (let i = 0; i <= lastQuestion; i++) {
-        
-//     }
-// }
-
-
-
-
-
+//Set clicked answer to new value for validation 
+// Cited:  https://stackoverflow.com/questions/62877440/trouble-with-multiple-choice-quiz
 function setClickedAnswer(button) {
-
-    if (button === 1) {
+    if (button.target.id === "1") {
         clickedAnswer = 1;
-    } else if (button === 2) {
+    } else if (button.target.id === "2") {
         clickedAnswer = 2;
-    } else if (button === 3) {
+    } else if (button.target.id === "3") {
         clickedAnswer = 3;
     } else {
         clickedAnswer = 4;
     }
     validateAnswer();
-
+    // console.log(clickedAnswer);
 }
 
-
+// Validate clicked answer with quiz answer
 function validateAnswer() {
-    if (clickedAnswer == q.answer)  {
+    if (clickedAnswer == q.answer) {
         returnAnswer.setAttribute("style", "display: block;");
         returnAnswer.textContent = "CORRECT!";
     } else {
         returnAnswer.setAttribute("style", "display: block;")
         returnAnswer.textContent = "WRONG!";
-        if (runningQuestion < lastQuestion) {   
+        if (runningQuestion < lastQuestion) {
             runningQuestion++;
             displayQuestion();
         } else {
             clearInterval(timer);
-            alert = "GAME OVER!"; 
+            alert = "GAME OVER!";
         }
     }
 }
-
+            
 console.log(runningQuestion);
 console.log(lastQuestion);
 
@@ -175,10 +165,11 @@ console.log(lastQuestion);
 
 
 
-answer1.addEventListener("click", setClickedAnswer(1));
-answer2.addEventListener("click", setClickedAnswer(2));
-answer3.addEventListener("click", setClickedAnswer(3));
-answer4.addEventListener("click", setClickedAnswer(4));
+// Event listeners for each multiple choice answer
+answer1.addEventListener("click", setClickedAnswer);
+answer2.addEventListener("click", setClickedAnswer);
+answer3.addEventListener("click", setClickedAnswer);
+answer4.addEventListener("click", setClickedAnswer);
 
 
 
