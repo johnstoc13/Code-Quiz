@@ -146,9 +146,11 @@ function setClickedAnswer(button) {
 function validateAnswer() {
     if (clickedAnswer == q.answer) {
         returnAnswer.setAttribute("style", "display: block;");
+        returnAnswer.setAttribute("class", "correct");
         returnAnswer.textContent = "CORRECT!";
     } else {
-        returnAnswer.setAttribute("style", "display: block;")
+        returnAnswer.setAttribute("style", "display: block;");
+        returnAnswer.setAttribute("class", "wrong");
         returnAnswer.textContent = "WRONG!";
         if (runningQuestion < lastQuestion) {
             runningQuestion++;
