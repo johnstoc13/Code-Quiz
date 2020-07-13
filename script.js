@@ -94,6 +94,7 @@ let answer4 = document.querySelector("#option4");
 let returnAnswer = document.querySelector("#return-answer");
 let runningQuestion = 0;
 let lastQuestion = myQuestions.length - 1;
+let clickedAnswer = null;
 
 // Runs the countdown timer when clicked
 function countdown() {
@@ -106,11 +107,12 @@ function countdown() {
         }
     }
 }
-
+console.log(clickedAnswer); 
 // Toggle from home page to beginning of quiz
 function startQuiz() {
     document.getElementById("startquiz").style.display = "block";
     document.getElementById("startpage").style.display = "none";
+    console.log(clickedAnswer);
 }
 
 // Display first question and answers
@@ -123,16 +125,34 @@ function displayQuestion()  {
     answer4.textContent = q.choiceD;
 }
 
-function nextQuestion() {
-    for (let i = 0; i <= lastQuestion; i++) {
+// function nextQuestion() {
+//     for (let i = 0; i <= lastQuestion; i++) {
         
+//     }
+// }
+
+
+
+
+
+function setClickedAnswer(button) {
+
+    if (button === 1) {
+        clickedAnswer = 1;
+    } else if (button === 2) {
+        clickedAnswer = 2;
+    } else if (button === 3) {
+        clickedAnswer = 3;
+    } else {
+        clickedAnswer = 4;
     }
+    validateAnswer();
+
 }
 
 
-function validateAnswer(answer) {
-    if (answer == q.answer)  {
-        score++;
+function validateAnswer() {
+    if (clickedAnswer == q.answer)  {
         returnAnswer.setAttribute("style", "display: block;");
         returnAnswer.textContent = "CORRECT!";
     } else {
@@ -148,7 +168,6 @@ function validateAnswer(answer) {
     }
 }
 
-console.log(score);
 console.log(runningQuestion);
 console.log(lastQuestion);
 
@@ -156,6 +175,10 @@ console.log(lastQuestion);
 
 
 
+answer1.addEventListener("click", setClickedAnswer(1));
+answer2.addEventListener("click", setClickedAnswer(2));
+answer3.addEventListener("click", setClickedAnswer(3));
+answer4.addEventListener("click", setClickedAnswer(4));
 
 
 
