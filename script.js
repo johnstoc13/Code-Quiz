@@ -165,7 +165,7 @@ function nextQuestion() {
         runningQuestion++;
         displayQuestion();
     } else  {
-        alert = "GAME OVER!";
+        alert ("GAME OVER!");
     }
     console.log(runningQuestion);
     console.log(lastQuestion);
