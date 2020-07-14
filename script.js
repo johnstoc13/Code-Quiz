@@ -96,6 +96,7 @@ const returnAnswer = document.querySelector("#return-answer");
 const finalAnswer = document.querySelector("#final-answer");
 const timerDisplay = document.querySelector("#timer");
 const finalScore = document.querySelector("#finalscore");
+const submitScore = document.querySelector("#submit");
 let runningQuestion = 0;
 let lastQuestion = myQuestions.length - 1;
 let timer;
@@ -143,7 +144,6 @@ function setClickedAnswer(button) {
     clickedAnswer = 4;
   }
   validateAnswer();
-  // console.log(clickedAnswer);
 }
 
 // Validate clicked answer with quiz answer
@@ -183,11 +183,45 @@ function endQuiz() {
     if (timeLeft <= 0) {
       finalScore.textContent = "Your final score is 0.";
       timerDisplay.textContent = " 0 sec ";
+      score = 0;
     } else {
       finalScore.textContent = "Your final score is " + timeLeft + ".";
+      score = timeLeft;
     }
   }
 }
+
+
+
+
+
+
+
+function showHighscores() {
+  document.getElementById("highscores").style.display = "block";
+  document.getElementById("startquiz").style.display = "none";
+  document.getElementById("endquiz").style.display = "none";
+  document.getElementById("startpage").style.display = "none";
+  document.getElementById("reset-nav").style.display = "block";
+  document.getElementById("highscore-nav").style.display = "none";
+  // window.location.href = "highscores.html";
+  // storeScores();
+}
+
+const scoreList = document.querySelector("#score-list");
+let scores = [];
+
+function storeScores() {
+  // Stringify and set "initials" key in localStorage to scores array
+  localStorage.setItem("initials", JSON.stringify(scores));
+}
+
+
+const highscoreNav = document.querySelector("#highscore-nav");
+
+
+
+
 
 // Event listeners for each multiple choice answer
 start.addEventListener("click", countdown);
@@ -195,36 +229,15 @@ answer1.addEventListener("click", setClickedAnswer);
 answer2.addEventListener("click", setClickedAnswer);
 answer3.addEventListener("click", setClickedAnswer);
 answer4.addEventListener("click", setClickedAnswer);
+submitScore.addEventListener("click", showHighscores);
+highscoreNav.addEventListener("click", showHighscores);
 
 
 
-
-
-
-
-
-
-
-
-// console.log(validateAnswer);
-
-// Ideas for above loop:  Need to validate 
-
-// for (var i = 0; i < myQuestions.length; i++) {
-//     let response = onclick(questions[i])
-//     if (response == questions[i].answer) {
-//         score++;
-//     } else {
-//         timeLeft-10;
-//     }
-// }
-
-// const scoreList = document.querySelector("#score-list");
-// let scores = [];
 
 // function renderHighscores() {
-//     // Clear scoreList element and update todoCountSpan
-//     scoreList.innerHTML = "";
+//     // Clear scoreList element and update scoreCountSpan
+//     // scoreList.innerHTML = "";
 
 //     // Render a new li for each highscore
 //     for (var i = 0; i < scores.length; i++) {
@@ -238,31 +251,23 @@ answer4.addEventListener("click", setClickedAnswer);
 //     }
 //   }
 
-//   function storeScores() {
-//     // Stringify and set "scores" key in localStorage to scores array
-//     localStorage.setItem("scores", JSON.stringify(scores));
-//   }
+  // function init() {
+  //   // Get stored todos from localStorage
+  //   // Parsing the JSON string to an object
+  //   var storedScores = JSON.parse(localStorage.getItem("scores"));
 
-//   function init() {
-//     // Get stored todos from localStorage
-//     // Parsing the JSON string to an object
-//     var storedScores = JSON.parse(localStorage.getItem("scores"));
+  //   // If todos were retrieved from localStorage, update the scores array to it
+  //   if (storedScores !== null) {
+  //     scores = storedScores;
+  //   }
 
-//     // If todos were retrieved from localStorage, update the scores array to it
-//     if (storedScores !== null) {
-//       scores = storedScores;
-//     }
-
-//     // Render scores to the DOM
-//     renderHighscores();
-//   }
+  //   // Render scores to the DOM
+  //   renderHighscores();
+  // }
 
 
 // NEEDS:
-// 
-// Need to display "correct" or "incorrect"  (if incorrect, subtract time)
-// When time runs out, end quiz and reveal score. Also ask for user intials to be sent to HIGHSCORE page
-
-
+// renderHighscores Function
+// storeHighscores Function
 // <ol> for the highscores.  Add some css to every other line to make easy to read
-// Button to clear the highscores and reset the session log.
+// Button functionality to clear the highscores and reset the session log.

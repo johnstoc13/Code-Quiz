@@ -12,6 +12,19 @@
     display: none;
 }
 
+#highscores {
+    display: none;
+}
+
+#reset-nav {
+    display: none;
+}
+
+/* .highscore-nav {
+    color: #007bff;
+    font-weight: bold;
+} */
+
 .correct {
     color: #28a746;
     text-align: center;

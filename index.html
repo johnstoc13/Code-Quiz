@@ -16,7 +16,8 @@
     <header class="container-fluid text-primary mt-2">
         <div class="row">
             <div class="col-6">
-                <a href="highscores.html"><strong>View Highscores</strong></a>
+                <a href="#" id="highscore-nav"><strong>View Highscores</strong></a>
+                <a href="index.html" id="reset-nav"><strong>Start New Quiz</strong></a>
             </div>
             <div class="col-6 d-flex justify-content-end">
                 <a href="#"><strong>Time:&ThinSpace;</strong></a>
@@ -34,8 +35,7 @@
                     <h1 class="text-center"><strong>Coding Quiz Challenge</strong></h1>
                     <br />
                     <h5 class="text-center">Try to answer the following code-related questions within the time limit.
-                        Keep
-                        in mind that incorrect answers will penalize your score/time by ten seconds!</h5>
+                        Keep in mind that incorrect answers will penalize your score/time by ten seconds!</h5>
                     <br />
                     <div class="d-flex justify-content-center">
                         <a class="btn btn-primary text-white" id="start">Start Quiz</a>
@@ -80,7 +80,7 @@
                                 <!-- Cited:  https://stackoverflow.com/questions/43488490/input-text-allow-only-3-specific-characters -->
                                 <input type="text" maxlength="3" class="form-control" id="inputInitials">
                             </div>
-                            <a class="col-2 btn btn-primary text-white px-1" href="highscores.html">Submit</a>
+                            <a class="col-2 btn btn-primary text-white px-1" id="submit">Submit</a>
                         </div>
                     </form>
                     <div>
@@ -89,6 +89,23 @@
                     <div id="final-answer"></div>
                 </div>
                 <div class="col-md-2"></div>
+            </div>
+        </section>
+
+        <section class="container-fluid mt-5" id="highscores">
+            <div class="row scores">
+                <div class="col-md-3 col-lg-4"></div>
+                <div class="col-md-6 col-lg-4">
+                    <h1><strong>Highscores!</strong></h1>
+                    <br />
+                    <ol id="score-list"></ol>
+                    <br />
+                    <div>
+                        <a class="btn btn-primary text-white mr-2" href="index.html">Go Back</a>
+                        <a id="clear-scores" class="btn btn-primary text-white ml-2">Clear Highscores</a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-lg-4"></div>
             </div>
         </section>
 
@@ -102,9 +119,10 @@
         </div>
     </footer>
 
+    <!-- Link to Javascript -->
+    <script src="script.js"></script>
+
 </body>
 
-<!-- Link to Javascript -->
-<script src="script.js"></script>
 
 </html>
