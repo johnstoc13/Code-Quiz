@@ -97,20 +97,21 @@ const finalAnswer = document.querySelector("#final-answer");
 const timerDisplay = document.querySelector("#timer");
 const finalScore = document.querySelector("#finalscore");
 const submitScore = document.querySelector("#submit");
+const highscoreNav = document.querySelector("#highscore-nav");
 let runningQuestion = 0;
 let lastQuestion = myQuestions.length - 1;
 let timer;
 
 // Runs the countdown timer, activates startQuiz & displayQuestion functions when clicked
-function countdown() {
-  timer = setInterval(timeText, 1000);
-
-  function timeText() {
-    if (timeLeft == 0) {
+function countDown() { 
+  timer = setInterval(function() {
+    timeLeft--;
+    timerDisplay.textContent = timeLeft + " sec ";
+    if (timeLeft <= 0)  {
       clearInterval(timer);
+      endQuiz();
     }
-    timerDisplay.textContent = --timeLeft + " sec ";
-  }
+  }, 1000)
   startQuiz();
   displayQuestion();
 }
@@ -191,46 +192,53 @@ function endQuiz() {
   }
 }
 
-
-
-
-
-
-
+// Displays highscores section
 function showHighscores() {
   document.getElementById("highscores").style.display = "block";
-  document.getElementById("startquiz").style.display = "none";
   document.getElementById("endquiz").style.display = "none";
   document.getElementById("startpage").style.display = "none";
   document.getElementById("reset-nav").style.display = "block";
   document.getElementById("highscore-nav").style.display = "none";
-  // window.location.href = "highscores.html";
-  // storeScores();
 }
-
-const scoreList = document.querySelector("#score-list");
-let scores = [];
-
-function storeScores() {
-  // Stringify and set "initials" key in localStorage to scores array
-  localStorage.setItem("initials", JSON.stringify(scores));
-}
-
-
-const highscoreNav = document.querySelector("#highscore-nav");
-
-
-
-
 
 // Event listeners for each multiple choice answer
-start.addEventListener("click", countdown);
+start.addEventListener("click", countDown);
 answer1.addEventListener("click", setClickedAnswer);
 answer2.addEventListener("click", setClickedAnswer);
 answer3.addEventListener("click", setClickedAnswer);
 answer4.addEventListener("click", setClickedAnswer);
 submitScore.addEventListener("click", showHighscores);
 highscoreNav.addEventListener("click", showHighscores);
+
+
+
+
+
+
+
+
+
+
+const scoreList = document.querySelector("#score-list");
+let scores = [];
+
+
+function storeScores() {
+  // Stringify and set "initials" key in localStorage to scores array
+  localStorage.setItem("initials", JSON.stringify(scores));
+}
+
+function getScores() {
+  // Get stored scores from localStorage
+  // Parsing the JSON string to an object
+  const storedScores = JSON.parse(localStorage.getItem("scores"));
+  if (storeScores)  {
+    scores = storedScores;
+  }
+}
+
+
+
 
 
 
@@ -251,10 +259,7 @@ highscoreNav.addEventListener("click", showHighscores);
 //     }
 //   }
 
-  // function init() {
-  //   // Get stored todos from localStorage
-  //   // Parsing the JSON string to an object
-  //   var storedScores = JSON.parse(localStorage.getItem("scores"));
+ 
 
   //   // If todos were retrieved from localStorage, update the scores array to it
   //   if (storedScores !== null) {
