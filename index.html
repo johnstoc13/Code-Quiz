@@ -20,7 +20,7 @@
             </div>
             <div class="col-6 d-flex justify-content-end">
                 <a href="#"><strong>Time:&ThinSpace;</strong></a>
-                <div class="text-danger" id="timer">5 sec</div>
+                <div class="text-danger" id="timer">10 sec</div>
             </div>
         </div>
     </header>
@@ -33,7 +33,8 @@
                 <div class="col-sm-12 col-md-6">
                     <h1 class="text-center"><strong>Coding Quiz Challenge</strong></h1>
                     <br />
-                    <h5 class="text-center">Try to answer the following code-related questions within the time limit. Keep
+                    <h5 class="text-center">Try to answer the following code-related questions within the time limit.
+                        Keep
                         in mind that incorrect answers will penalize your score/time by ten seconds!</h5>
                     <br />
                     <div class="d-flex justify-content-center">
@@ -43,7 +44,7 @@
                 <div class="col-md-3"></div>
             </div>
         </section>
-    
+
         <!-- Quiz Content Section After Quiz Starts -->
         <section class="container mt-5" id="startquiz">
             <div class="row">
@@ -57,12 +58,40 @@
                     <button class="btn btn-primary text-white" id="4"></button>
                     <div>
                         <hr class="border border-primary mt-5">
-                    </div>    
+                    </div>
                     <div id="return-answer"></div>
                 </div>
                 <div class="col-md-3"></div>
             </div>
         </section>
+
+        <!-- All Done Section After Quiz Completes -->
+        <section class="container mt-5" id="endquiz">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-sm-12 col-md-7 d-flex flex-column">
+                    <h4 class="mb-0" id="done"><strong>All done!</strong></h4>
+                    <br />
+                    <p id="finalscore">Your final score is 5000.</p>
+                    <form>
+                        <div class="form-group row px-3 mb-0">
+                            <label for="enterInitials" class="col-3 col-form-label px-0">Enter initials:</label>
+                            <div class="col-7 pr-3 pl-0">
+                                <!-- Cited:  https://stackoverflow.com/questions/43488490/input-text-allow-only-3-specific-characters -->
+                                <input type="text" maxlength="3" class="form-control" id="inputInitials">
+                            </div>
+                            <a class="col-2 btn btn-primary text-white px-1" href="highscores.html">Submit</a>
+                        </div>
+                    </form>
+                    <div>
+                        <hr class="border border-primary mt-5">
+                    </div>
+                    <div id="final-answer"></div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </section>
+
     </main>
 
     <!-- Footer -->
