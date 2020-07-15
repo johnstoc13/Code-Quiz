@@ -98,16 +98,18 @@ const timerDisplay = document.querySelector("#timer");
 const finalScore = document.querySelector("#finalscore");
 const submitScore = document.querySelector("#submit");
 const highscoreNav = document.querySelector("#highscore-nav");
+const deleteScore = document.querySelector("#clear-scores");
+const scoreList = document.querySelector("#score-list");
 let runningQuestion = 0;
 let lastQuestion = myQuestions.length - 1;
 let timer;
 
 // Runs the countdown timer, activates startQuiz & displayQuestion functions when clicked
-function countDown() { 
-  timer = setInterval(function() {
+function countDown() {
+  timer = setInterval(function () {
     timeLeft--;
     timerDisplay.textContent = timeLeft + " sec ";
-    if (timeLeft <= 0)  {
+    if (timeLeft <= 0) {
       clearInterval(timer);
       endQuiz();
     }
@@ -165,7 +167,6 @@ function validateAnswer() {
       nextQuestion();
     }
   } else endQuiz();
-
 }
 
 // Load next question
@@ -199,6 +200,28 @@ function showHighscores() {
   document.getElementById("startpage").style.display = "none";
   document.getElementById("reset-nav").style.display = "block";
   document.getElementById("highscore-nav").style.display = "none";
+  getScores();
+}
+
+// Stores the initials and score of the user in local storage
+function storeScores() {
+  // Stringify and set "initials" key in localStorage to scores array
+  const initials = document.getElementById("inputInitials").value
+  localStorage.setItem(initials, score);
+}
+
+// Pushes the stored scores into an ordered list on the page
+function getScores() {
+  console.log(localStorage);
+  // Returns an array of keys
+  // Help here with tutoring session 7/14/2020
+  let initialsArray = Object.keys(localStorage);
+  for (var i = 0; i < initialsArray.length; i++) {
+    console.log(localStorage[initialsArray[i]]);
+    let li = document.createElement("li");
+    li.textContent = initialsArray[i] + ": " + localStorage[initialsArray[i]];
+    document.getElementById("score-list").appendChild(li);
+  }
 }
 
 // Event listeners for each multiple choice answer
@@ -207,72 +230,16 @@ answer1.addEventListener("click", setClickedAnswer);
 answer2.addEventListener("click", setClickedAnswer);
 answer3.addEventListener("click", setClickedAnswer);
 answer4.addEventListener("click", setClickedAnswer);
-submitScore.addEventListener("click", showHighscores);
+submitScore.addEventListener("click", function () {
+  storeScores();
+  showHighscores();
+});
 highscoreNav.addEventListener("click", showHighscores);
+deleteScore.addEventListener("click", function () {
+  localStorage.clear()
+  document.getElementById("score-list").innerHTML = "";
+});
 
-
-
-
-
-
-
-
-
-
-const scoreList = document.querySelector("#score-list");
-let scores = [];
-
-
-function storeScores() {
-  // Stringify and set "initials" key in localStorage to scores array
-  localStorage.setItem("initials", JSON.stringify(scores));
-}
-
-function getScores() {
-  // Get stored scores from localStorage
-  // Parsing the JSON string to an object
-  const storedScores = JSON.parse(localStorage.getItem("scores"));
-  if (storeScores)  {
-    scores = storedScores;
-  }
-}
-
-
-
-
-
-
-
-// function renderHighscores() {
-//     // Clear scoreList element and update scoreCountSpan
-//     // scoreList.innerHTML = "";
-
-//     // Render a new li for each highscore
-//     for (var i = 0; i < scores.length; i++) {
-//       var score = scores[i];
-
-//       var li = document.createElement("li");
-//       li.textContent = score;
-//       li.setAttribute("data-index", i);
-
-//       scoreList.appendChild(li);
-//     }
-//   }
-
- 
-
-  //   // If todos were retrieved from localStorage, update the scores array to it
-  //   if (storedScores !== null) {
-  //     scores = storedScores;
-  //   }
-
-  //   // Render scores to the DOM
-  //   renderHighscores();
-  // }
-
-
-// NEEDS:
-// renderHighscores Function
-// storeHighscores Function
-// <ol> for the highscores.  Add some css to every other line to make easy to read
-// Button functionality to clear the highscores and reset the session log.
+// FINAL TO DO LIST:
+// <ol> Add some css to every other line to make easy to read
+// <ol> Make all inputs display in uppercase letters for readability
