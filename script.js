@@ -208,7 +208,7 @@ function showHighscores() {
 function storeScores() {
   // Stringify and set "initials" key in localStorage to scores array
   const initials = document.getElementById("inputInitials").value
-  localStorage.setItem(initials, score);
+  localStorage.setItem(score, initials);
 }
 
 // Pushes the stored scores into an ordered list on the page
@@ -216,29 +216,15 @@ function getScores() {
   console.log(localStorage);
   // Returns an array of keys
   // Help here with tutoring session 7/14/2020
-  let initialsArray = Object.keys(localStorage);
-  for (var i = 0; i < initialsArray.length; i++) {
-    console.log(localStorage[initialsArray[i]]);
+  let scoresArray = Object.keys(localStorage);
+  for (var i = 0; i < scoresArray.length; i++) {
+    console.log(localStorage[scoresArray[i]]);
     let li = document.createElement("li");
     // Cited:  https://stackoverflow.com/questions/33539797/how-to-create-string-with-multiple-spaces-in-javascript
-    li.textContent = "\xa0\xa0\xa0" + initialsArray[i].toUpperCase() + "\xa0\xa0" + "-" + "\xa0\xa0" + localStorage[initialsArray[i]];
+    li.textContent = "\xa0\xa0\xa0" + scoresArray[i].toUpperCase() + "\xa0\xa0" + "-" + "\xa0\xa0" + localStorage[scoresArray[i]];
     document.getElementById("score-list").appendChild(li);
   }
 }
-
-
-// This function fails to sort by values of the users*********
-// function newSorter() {
-//   let scoresArray = Object.values(localStorage);
-//   for (var i = 0; i < scoresArray.length; i++) {
-//     scoresArray.sort((a, b) => a - b);
-//     console.log(scoresArray);
-//   }
-// }
-
-
-
-
 
 // This sort function does an alphabetical sort on the initials
 // Cited:  https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_sort_list
@@ -258,7 +244,7 @@ function sortList() {
       shouldSwitch = false;
       /* check if the next item should
       switch place with the current item: */
-      if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {
+      if (b[i].innerHTML.toLowerCase() < b[i + 1].innerHTML.toLowerCase()) {
         /* if next item is alphabetically
         lower than current item, mark as a switch
         and break the loop: */
@@ -274,13 +260,6 @@ function sortList() {
     }
   }
 }
-
-
-
-
-
-
-
 
 // Event listeners for each multiple choice answer
 start.addEventListener("click", countDown);
@@ -298,6 +277,3 @@ deleteScore.addEventListener("click", function () {
   localStorage.clear()
   document.getElementById("score-list").innerHTML = "";
 });
-
-// FINAL TO DO LIST:
-// <ol> Add some css to every other line to make easy to read
