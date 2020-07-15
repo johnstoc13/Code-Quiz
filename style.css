@@ -20,10 +20,10 @@
     display: none;
 }
 
-/* .highscore-nav {
-    color: #007bff;
-    font-weight: bold;
-} */
+/* Cited:  https://stackoverflow.com/questions/358350/alternate-background-colors-for-list-items */
+li:nth-child(odd) {
+    background-color: #ffc107;
+}
 
 .correct {
     color: #28a746;
