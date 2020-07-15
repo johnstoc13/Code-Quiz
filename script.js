@@ -201,6 +201,7 @@ function showHighscores() {
   document.getElementById("reset-nav").style.display = "block";
   document.getElementById("highscore-nav").style.display = "none";
   getScores();
+  sortList();
 }
 
 // Stores the initials and score of the user in local storage
@@ -219,10 +220,67 @@ function getScores() {
   for (var i = 0; i < initialsArray.length; i++) {
     console.log(localStorage[initialsArray[i]]);
     let li = document.createElement("li");
-    li.textContent = initialsArray[i] + ": " + localStorage[initialsArray[i]];
+    // Cited:  https://stackoverflow.com/questions/33539797/how-to-create-string-with-multiple-spaces-in-javascript
+    li.textContent = "\xa0\xa0\xa0" + initialsArray[i].toUpperCase() + "\xa0\xa0" + "-" + "\xa0\xa0" + localStorage[initialsArray[i]];
     document.getElementById("score-list").appendChild(li);
   }
 }
+
+
+// This function fails to sort by values of the users*********
+// function newSorter() {
+//   let scoresArray = Object.values(localStorage);
+//   for (var i = 0; i < scoresArray.length; i++) {
+//     scoresArray.sort((a, b) => a - b);
+//     console.log(scoresArray);
+//   }
+// }
+
+
+
+
+
+// This sort function does an alphabetical sort on the initials
+// Cited:  https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_sort_list
+function sortList() {
+  var list, i, switching, b, shouldSwitch;
+  list = document.getElementById("score-list");
+  switching = true;
+  /* Make a loop that will continue until
+  no switching has been done: */
+  while (switching) {
+    // start by saying: no switching is done:
+    switching = false;
+    b = list.getElementsByTagName("li");
+    // Loop through all list-items:
+    for (i = 0; i < (b.length - 1); i++) {
+      // start by saying there should be no switching:
+      shouldSwitch = false;
+      /* check if the next item should
+      switch place with the current item: */
+      if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {
+        /* if next item is alphabetically
+        lower than current item, mark as a switch
+        and break the loop: */
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      /* If a switch has been marked, make the switch
+      and mark the switch as done: */
+      b[i].parentNode.insertBefore(b[i + 1], b[i]);
+      switching = true;
+    }
+  }
+}
+
+
+
+
+
+
+
 
 // Event listeners for each multiple choice answer
 start.addEventListener("click", countDown);
@@ -233,6 +291,7 @@ answer4.addEventListener("click", setClickedAnswer);
 submitScore.addEventListener("click", function () {
   storeScores();
   showHighscores();
+  sortList();
 });
 highscoreNav.addEventListener("click", showHighscores);
 deleteScore.addEventListener("click", function () {
@@ -242,4 +301,3 @@ deleteScore.addEventListener("click", function () {
 
 // FINAL TO DO LIST:
 // <ol> Add some css to every other line to make easy to read
-// <ol> Make all inputs display in uppercase letters for readability
