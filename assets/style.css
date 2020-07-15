@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+
+* {
+    font-family: 'Lato', sans-serif;
+}
+
+#startquiz {
+    display: none;
+}
+
+#endquiz {
+    display: none;
+}
+
+#highscores {
+    display: none;
+}
+
+#reset-nav {
+    display: none;
+}
+
+/* Cited:  https://stackoverflow.com/questions/358350/alternate-background-colors-for-list-items */
+li:nth-child(odd) {
+    background-color: #ffc107;
+}
+
+.correct {
+    color: #28a746;
+    text-align: center;
+}
+
+.wrong {
+    color: #dd3546;
+    text-align: center;
+}
+
+.footer-font {
+    font-size: 12px;
+}
+
+.footer-margin {
+    height: 48px;
+}
