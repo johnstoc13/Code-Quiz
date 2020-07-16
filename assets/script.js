@@ -201,63 +201,26 @@ function showHighscores() {
   document.getElementById("reset-nav").style.display = "block";
   document.getElementById("highscore-nav").style.display = "none";
   getScores();
-  sortList();
 }
 
 // Stores the initials and score of the user in local storage
 function storeScores() {
   // Stringify and set "initials" key in localStorage to scores array
   const initials = document.getElementById("inputInitials").value
-  localStorage.setItem(score, initials);
+  localStorage.setItem(initials, score);
 }
 
-// Pushes the stored scores into an ordered list on the page
+// Creates an array of scores, sorts them, and creates list items
 function getScores() {
-  console.log(localStorage);
-  // Returns an array of keys
-  // Help here with tutoring session 7/14/2020
-  let scoresArray = Object.keys(localStorage);
+  let scoresArray = Object.entries(localStorage)
+  scoresArray.sort(function(a, b) {
+    return b[1] - a[1];
+  })
   for (var i = 0; i < scoresArray.length; i++) {
-    console.log(localStorage[scoresArray[i]]);
     let li = document.createElement("li");
     // Cited:  https://stackoverflow.com/questions/33539797/how-to-create-string-with-multiple-spaces-in-javascript
-    li.textContent = "\xa0\xa0\xa0" + scoresArray[i].toUpperCase() + "\xa0\xa0" + "-" + "\xa0\xa0" + localStorage[scoresArray[i]];
+    li.textContent = "\xa0\xa0\xa0" + scoresArray[i][0].toUpperCase() + "\xa0\xa0" + "-" + "\xa0\xa0" + scoresArray[i][1];
     document.getElementById("score-list").appendChild(li);
-  }
-}
-
-// This sort function does an alphabetical sort on the initials
-// Cited:  https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_sort_list
-function sortList() {
-  var list, i, switching, b, shouldSwitch;
-  list = document.getElementById("score-list");
-  switching = true;
-  /* Make a loop that will continue until
-  no switching has been done: */
-  while (switching) {
-    // start by saying: no switching is done:
-    switching = false;
-    b = list.getElementsByTagName("li");
-    // Loop through all list-items:
-    for (i = 0; i < (b.length - 1); i++) {
-      // start by saying there should be no switching:
-      shouldSwitch = false;
-      /* check if the next item should
-      switch place with the current item: */
-      if (b[i].innerHTML.toLowerCase() < b[i + 1].innerHTML.toLowerCase()) {
-        /* if next item is alphabetically
-        lower than current item, mark as a switch
-        and break the loop: */
-        shouldSwitch = true;
-        break;
-      }
-    }
-    if (shouldSwitch) {
-      /* If a switch has been marked, make the switch
-      and mark the switch as done: */
-      b[i].parentNode.insertBefore(b[i + 1], b[i]);
-      switching = true;
-    }
   }
 }
 
@@ -270,7 +233,6 @@ answer4.addEventListener("click", setClickedAnswer);
 submitScore.addEventListener("click", function () {
   storeScores();
   showHighscores();
-  sortList();
 });
 highscoreNav.addEventListener("click", showHighscores);
 deleteScore.addEventListener("click", function () {
