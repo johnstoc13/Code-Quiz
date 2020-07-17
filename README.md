@@ -43,8 +43,7 @@ LESSONS LEARNED: I have a much better comprehension of javascript now after this
 
 ### Highscores Page
 
-<img width="1029" alt="Scores" src="https://user-images.githubusercontent.com/66090689/87570462-b4447200-c696-11ea-8fa2-82adbf955eb0.png">
-
+<img width="1032" alt="Highscores" src="https://user-images.githubusercontent.com/66090689/87823158-cf52e580-c840-11ea-8537-e935338eb5ea.png">
 
 ### Highscores Cleared
 
