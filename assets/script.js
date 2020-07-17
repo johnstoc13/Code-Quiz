@@ -200,26 +200,38 @@ function showHighscores() {
   document.getElementById("startpage").style.display = "none";
   document.getElementById("reset-nav").style.display = "block";
   document.getElementById("highscore-nav").style.display = "none";
-  getScores();
+  renderScores();
 }
 
-// Stores the initials and score of the user in local storage
+// Set up an array, stringify into localStorage and parse when taking out
 function storeScores() {
-  // Stringify and set "initials" key in localStorage to scores array
+  let scoresArray = localStorage.getItem("storedScores");
+  if (!scoresArray) {
+    scoresArray = [];
+  } else {
+    scoresArray = JSON.parse(scoresArray)
+  };
   const initials = document.getElementById("inputInitials").value
-  localStorage.setItem(initials, score);
+  let userScore = { initials, score };
+  scoresArray.push(userScore);
+  localStorage.setItem("storedScores", JSON.stringify(scoresArray));
 }
 
-// Creates an array of scores, sorts them, and creates list items
-function getScores() {
-  let scoresArray = Object.entries(localStorage)
-  scoresArray.sort(function(a, b) {
-    return b[1] - a[1];
+// Render scores to document and sort by score value
+function renderScores() {
+  let scoresArray = localStorage.getItem("storedScores");
+  if (!scoresArray) {
+    scoresArray = [];
+  } else {
+    scoresArray = JSON.parse(scoresArray)
+  };
+  scoresArray.sort(function (a, b) {
+    return b.score - a.score;
   })
   for (var i = 0; i < scoresArray.length; i++) {
     let li = document.createElement("li");
     // Cited:  https://stackoverflow.com/questions/33539797/how-to-create-string-with-multiple-spaces-in-javascript
-    li.textContent = "\xa0\xa0\xa0" + scoresArray[i][0].toUpperCase() + "\xa0\xa0" + "-" + "\xa0\xa0" + scoresArray[i][1];
+    li.textContent = "\xa0\xa0\xa0" + scoresArray[i].initials.toUpperCase() + "\xa0\xa0" + "-" + "\xa0\xa0" + scoresArray[i].score;
     document.getElementById("score-list").appendChild(li);
   }
 }
