@@ -99,7 +99,6 @@ const finalScore = document.querySelector("#finalscore");
 const submitScore = document.querySelector("#submit");
 const highscoreNav = document.querySelector("#highscore-nav");
 const deleteScore = document.querySelector("#clear-scores");
-const scoreList = document.querySelector("#score-list");
 let runningQuestion = 0;
 let lastQuestion = myQuestions.length - 1;
 let timer;
@@ -113,7 +112,7 @@ function countDown() {
       clearInterval(timer);
       endQuiz();
     }
-  }, 1000)
+  }, 1000);
   startQuiz();
   displayQuestion();
 }
@@ -197,6 +196,7 @@ function endQuiz() {
 function showHighscores() {
   document.getElementById("highscores").style.display = "block";
   document.getElementById("endquiz").style.display = "none";
+  document.getElementById("startquiz").style.display = "none";
   document.getElementById("startpage").style.display = "none";
   document.getElementById("reset-nav").style.display = "block";
   document.getElementById("highscore-nav").style.display = "none";
@@ -209,9 +209,9 @@ function storeScores() {
   if (!scoresArray) {
     scoresArray = [];
   } else {
-    scoresArray = JSON.parse(scoresArray)
-  };
-  const initials = document.getElementById("inputInitials").value
+    scoresArray = JSON.parse(scoresArray);
+  }
+  const initials = document.getElementById("inputInitials").value;
   let userScore = { initials, score };
   scoresArray.push(userScore);
   localStorage.setItem("storedScores", JSON.stringify(scoresArray));
@@ -223,11 +223,13 @@ function renderScores() {
   if (!scoresArray) {
     scoresArray = [];
   } else {
-    scoresArray = JSON.parse(scoresArray)
-  };
+    scoresArray = JSON.parse(scoresArray);
+  }
+  // Sort the scores
   scoresArray.sort(function (a, b) {
     return b.score - a.score;
-  })
+  });
+  // Loop through and display on page
   for (var i = 0; i < scoresArray.length; i++) {
     let li = document.createElement("li");
     // Cited:  https://stackoverflow.com/questions/33539797/how-to-create-string-with-multiple-spaces-in-javascript
@@ -246,8 +248,11 @@ submitScore.addEventListener("click", function () {
   storeScores();
   showHighscores();
 });
-highscoreNav.addEventListener("click", showHighscores);
+highscoreNav.addEventListener("click", function() {
+  showHighscores();
+  clearInterval(timer);
+});
 deleteScore.addEventListener("click", function () {
-  localStorage.clear()
+  localStorage.clear();
   document.getElementById("score-list").innerHTML = "";
 });
