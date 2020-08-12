@@ -52,3 +52,7 @@ Bootstrap CSS Framework - https://getbootstrap.com/
 ### Highscores Cleared
 
 <img width="1025" alt="Scores Cleared" src="https://user-images.githubusercontent.com/66090689/87570465-b5759f00-c696-11ea-8488-a2577c461ef9.png">
+
+## Contact
+
+Email: chasej@live.com
