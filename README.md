@@ -25,6 +25,10 @@ This timed code quiz was very challenging, but also a lot of fun to create. I le
 
 LESSONS LEARNED: I have a much better comprehension of javascript now after this assignment. I was able to draw on knowledge from the previous "Password Generator" assignment as well, which made things go a bit smoother. Initially, I had this application set up with 2 HTML pages and tried to use 2 javascript files. This quickly became frustrating, so I took several steps back and pushed everything into single HTML and JS files. It took some extra work, but depending on the application, I would probably try to use single files again.
 
+## Resources
+
+Bootstrap CSS Framework - https://getbootstrap.com/
+
 ## Images
 ### Main Page Content
 
