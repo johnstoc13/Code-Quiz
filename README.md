@@ -59,4 +59,4 @@ Bootstrap CSS Framework - https://getbootstrap.com/
 
 ## MIT License
 
-[![license information](https://img.shields.io/badge/license-MIT-blue)]https://github.com/johnstoc13/Code-Quiz/blob/master/LICENSE
+[![license information](https://img.shields.io/badge/license-MIT-blue)](https://github.com/johnstoc13/Code-Quiz/blob/master/LICENSE)
