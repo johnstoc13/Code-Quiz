@@ -57,6 +57,6 @@ Bootstrap CSS Framework - https://getbootstrap.com/
 
 <img width="1025" alt="Scores Cleared" src="https://user-images.githubusercontent.com/66090689/87570465-b5759f00-c696-11ea-8488-a2577c461ef9.png">
 
-## MIT License
+## License
 
 [![license information](https://img.shields.io/badge/license-MIT-blue)](https://github.com/johnstoc13/Code-Quiz/blob/master/LICENSE)
