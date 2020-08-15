@@ -4,6 +4,10 @@
 
 This project includes an application that runs a timed code quiz with multiple choice questions. It runs in the browser and is mobile responsive using the Bootstrap CSS Framework.
 
+Tech Used: HTML, CSS, Javascript, Bootstrap
+
+Contact: chasej@live.com
+
 ## Requirements
 
 Functional, deployed application.
@@ -53,6 +57,24 @@ Bootstrap CSS Framework - https://getbootstrap.com/
 
 <img width="1025" alt="Scores Cleared" src="https://user-images.githubusercontent.com/66090689/87570465-b5759f00-c696-11ea-8488-a2577c461ef9.png">
 
-## Contact
+## MIT License
 
-Email: chasej@live.com
+Copyright (c) 2020 Chase Johnston
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
